@@ -37,6 +37,7 @@ router.post("/login", passport.authenticate("login",{failureRedirect: "/views/lo
 
 router.get("/registerGitHub", passport.authenticate("github",{ scope: [ 'user:email' ] }))
 router.get("/GitHub", passport.authenticate("github"), (req, res)=>{
+    req.session.email = req.user.email
     res.redirect("/products/")
 })
 
